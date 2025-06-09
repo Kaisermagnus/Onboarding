@@ -244,6 +244,7 @@
             <div class="modal-body">
                 <div id="solicitudDetailModalTabs" class="modal-tabs">
                     <button class="modal-tab-button active" data-tab="detailTabResumen" data-translate="detail_tab_resumen_ux">Resumen </button>
+                    <button class="modal-tab-button" data-tab="detailTabAnalisisIA" data-translate="detail_tab_analisis_ia">Análisis IA</button>
                     <button class="modal-tab-button" data-status-specific="enNegociacion" data-tab="detailTabTasas" id="tabButtonTasas" data-translate="detail_tab_tasas_comisiones">Comisión</button>
                     <button class="modal-tab-button" data-status-specific="autorizadas" data-tab="detailTabContratos" id="tabButtonContratos" data-translate="detail_tab_contratos">Contratos</button>
                     <button class="modal-tab-button" data-tab="detailTabComentarios" data-translate="detail_tab_comentarios_ux">Comentarios <span class="unsaved-indicator" id="comentariosUnsavedIndicator"></span></button>
@@ -265,6 +266,28 @@
                             <span class="value" id="modalDetailDiasEnProceso"></span>
                         </div>
                         <div class="detail-field"><label data-translate="detail_label_dias_etapa">Días en Etapa:</label><span class="value" id="modalDetailDiasEnEtapa"></span></div>
+                    </div>
+                </div>
+
+                <div id="detailTabAnalisisIA" class="detail-tab-content">
+                    <h4 class="detail-section-title" data-translate="detail_section_title_analisis_ia">Análisis de IA</h4>
+                    <!-- Content for IA Analysis will go here. For now, a placeholder -->
+                    <p>Contenido del Análisis de IA...</p>
+                    <div class="ia-global-result-box hidden">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex items-center">
+                                <span class="status-badge pendiente-ia"><i class="fas fa-hourglass-half"></i> Pendiente</span>
+                                <span class="date-time"></span>
+                            </div>
+                            <button class="text-xs text-sky-600 hover:underline">Ver detalle completo</button>
+                        </div>
+                        <div class="observations-wrapper hidden">
+                            <span class="observations-label">Observaciones IA:</span>
+                            <p class="observations"></p>
+                        </div>
+                    </div>
+                    <div id="documentosIaList" class="mt-4">
+                        <!-- Document list with IA status will be rendered here by JS -->
                     </div>
                 </div>
 
