@@ -13,14 +13,15 @@
 </head>
 <body class="bg-gray-100">
     <div class="flex h-screen">
+        <!-- Sidebar -->
         <aside id="sidebar" class="sidebar">
             <div class="sidebar-logo-container">
                 <a href="#" class="espiralapp-logo">
                      <svg class="mx-auto" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" aria-labelledby="sidebarLogoTitle">
-                         <title id="sidebarLogoTitle">Espiralapp</title>
-                         <path class="icon-path" d="M20,20 C20,10 30,10 30,20 S40,30 30,30 S20,10 20,10 M30,20 C40,10 40,30 30,30" />
-                         <path class="icon-path" d="M25,15 C15,15 15,25 25,25 S35,15 35,25" transform="rotate(45 25 20)"/>
-                         <text x="50" y="20" class="logo-text">Espiralapp</text>
+                        <title id="sidebarLogoTitle">Espiralapp</title>
+                        <path class="icon-path" d="M20,20 C20,10 30,10 30,20 S40,30 30,30 S20,10 20,10 M30,20 C40,10 40,30 30,30" />
+                        <path class="icon-path" d="M25,15 C15,15 15,25 25,25 S35,15 35,25" transform="rotate(45 25 20)"/>
+                        <text x="50" y="20" class="logo-text">Espiralapp</text>
                     </svg>
                 </a>
             </div>
@@ -48,7 +49,9 @@
             </div>
         </aside>
 
+        <!-- Main Content Area -->
         <div class="main-content-area flex-1 flex flex-col">
+            <!-- Header Bar -->
             <header class="header-bar">
                 <div>
                     <button id="hamburgerButton" class="lg:hidden hamburger-button p-2">
@@ -59,20 +62,45 @@
                     <div class="notification-icon-wrapper">
                         <button id="notificationButton" class="text-gray-600 hover:text-sky-600 focus:outline-none flex items-center" title="Notificaciones del sistema">
                             <i class="fas fa-bell text-xl"></i>
-                            <span id="notificationCountBadge" class="notification-badge">10</span>
+                            <span id="notificationCountBadge" class="notification-badge">3</span>
                         </button>
                         <div id="notificationDropdown" class="notification-dropdown hidden">
-                            <div class="notification-list">
-                                <!-- Notifications will be dynamically inserted here by JS -->
+                            <!-- Updated Notifications -->
+                            <div class="notification-item">
+                                <div class="notification-item-icon notification-icon-new-solicitud">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="notification-item-content">
+                                    <p class="title" data-translate="notification_ux_new_sol_title">Nueva Solicitud</p>
+                                    <p data-translate="notification_ux_new_sol_body">Solicitud #100003 de 'Abarrotes Don Pepe' lista para revisión.</p>
+                                    <p class="time">hace 2 minutos</p>
+                                </div>
                             </div>
-                            <div class="notification-footer">
-                                <a href="#" class="text-sm text-sky-600 hover:underline">Ver todas las notificaciones</a>
+                            <div class="notification-item">
+                                <div class="notification-item-icon notification-icon-incidencias-docs">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="notification-item-content">
+                                     <p class="title" data-translate="notification_ux_incidencias_title">Incidencias en Documentos</p>
+                                    <p data-translate="notification_ux_incidencias_body">Solicitud #100002 (TecnoSoluciones) tiene 2 incidencias. <a href="#" class="text-sky-600 hover:underline" data-solicitud-id="100002" data-action="ir-incidencias">Ir a incidencias</a></p>
+                                    <p class="time">hace 30 minutos</p>
+                                </div>
+                            </div>
+                             <div class="notification-item">
+                                <div class="notification-item-icon notification-icon-contrato-firmado">
+                                     <i class="fas fa-file-contract"></i>
+                                </div>
+                                <div class="notification-item-content">
+                                    <p class="title" data-translate="notification_ux_firmada_title">Contrato Firmado</p>
+                                    <p data-translate="notification_ux_firmada_body">Contrato de Solicitud #100001 (Servicios Digitales) ha sido firmado. <a href="#" class="text-sky-600 hover:underline" data-solicitud-id="100001" data-action="ver-pdf">Ver PDF</a></p>
+                                    <p class="time">hace 1 hora</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="user-menu-wrapper">
                         <button id="userMenuButton" class="user-menu-button">
-                            <img src="https://placehold.co/40x40/E0F2FE/0369A1?text=AP&font=Inter" alt="Avatar de usuario" class="w-10 h-10 rounded-full" onerror="this.src='https://placehold.co/40x40/E0F2FE/0369A1?text=??&font=Inter'">
+                            <img src="https://placehold.co/40x40/E0F2FE/0369A1?text=AP&font=Inter" alt="Avatar de usuario" class="w-10 h-10 rounded-full">
                             <i class="fas fa-chevron-down text-xs text-gray-500 ml-2"></i>
                         </button>
                         <div id="userDropdown" class="user-dropdown hidden">
@@ -83,40 +111,33 @@
                                 <i class="fas fa-cog"></i><span data-translate="user_menu_settings">Configuración</span>
                             </a>
                             <a href="#" id="userMenuLogoutButton" class="user-dropdown-link">
-                                <i class="fas fa-sign-out-alt"></i><span data-translate="user_menu_logout">Cerrar Sesión</span>
+                                <i class="fas fa-sign-out-alt"></i><span data-translate="nav_logout">Cerrar Sesión</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </header>
 
+            <!-- Page Content -->
             <main class="flex-grow p-6 overflow-y-auto">
-                <div id="toastMessage" class="hidden" aria-live="polite">Mensaje Toast</div>
+                <div id="toastMessage" class="hidden">Mensaje Toast</div>
 
-                <div class="mb-6 flex justify-between items-center">
+                <div class="mb-6">
                     <h1 class="text-2xl font-semibold text-gray-800" data-translate="solicitudes_title">Solicitudes de Registro de Comercios</h1>
-                    <button id="massActionsButton" class="modal-action-button tertiary" disabled><i class="fas fa-cogs mr-2"></i>Acciones Masivas</button>
+                </div>
+
+                <!-- Date Filter -->
+                <div class="date-filter-container">
+                    <label for="dateFrom" data-translate="date_filter_from">Desde:</label>
+                    <input type="date" id="dateFrom">
+                    <label for="dateTo" data-translate="date_filter_to">Hasta:</label>
+                    <input type="date" id="dateTo">
+                    <button id="applyDateFilter" class="date-filter-apply-btn" data-translate="date_filter_apply">Filtrar por Fecha</button>
+                    <button id="clearDateFilter" class="date-filter-clear-btn hidden" data-translate="date_filter_clear">Limpiar Filtro</button>
                 </div>
 
 
-                <div class="controls-container">
-                    <div class="global-search-container flex-grow">
-                        <div class="relative w-full">
-                             <i class="fas fa-search search-icon"></i>
-                            <input type="search" id="globalSearchInput" placeholder="Buscar por Nombre o RFC (presiona '/' para enfocar)..." class="focus:ring-sky-500 focus:border-sky-500 w-full">
-                        </div>
-                    </div>
-                    <div class="date-filter-group">
-                        <label for="dateFrom" data-translate="date_filter_from">Desde:</label>
-                        <input type="date" id="dateFrom">
-                        <label for="dateTo" data-translate="date_filter_to">Hasta:</label>
-                        <input type="date" id="dateTo">
-                        <button id="applyDateFilter" class="date-filter-apply-btn" data-translate="date_filter_apply" disabled>Filtrar</button>
-                        <button id="clearDateFilter" class="date-filter-clear-btn hidden" data-translate="date_filter_clear">Limpiar</button>
-                    </div>
-                </div>
-
-
+                <!-- Tabs for Statuses -->
                 <div class="mb-4 flex flex-wrap items-center" id="statusTabsContainer">
                     <button class="status-tab-button active" data-status-filter="todas" data-translate="status_tab_all">Todas</button>
                     <button class="status-tab-button" data-status-filter="nuevas" data-translate="status_tab_new">Nuevas <span class="status-tab-count"></span></button>
@@ -124,45 +145,43 @@
                     <button class="status-tab-button" data-status-filter="autorizadas" data-translate="status_tab_authorized">Autorizadas <span class="status-tab-count"></span></button>
                     <button class="status-tab-button" data-status-filter="pendienteFirma" data-translate="status_tab_pending_signature">Pendiente Firma <span class="status-tab-count"></span></button>
                     <button class="status-tab-button" data-status-filter="firmadas" data-translate="status_tab_signed">Firmadas <span class="status-tab-count"></span></button>
-                    <button class="status-tab-button separator" data-status-filter="rechazadas" data-translate="status_tab_rejected">Rechazadas <span class="status-tab-count"></span></button>
                 </div>
 
+                <!-- Table for Solicitudes -->
                 <div class="table-responsive-wrapper">
                     <table class="solicitudes-table">
                         <thead>
                             <tr>
-                                <th><input type="checkbox" id="selectAllCheckbox"></th>
                                 <th data-sort-key="id" data-translate="table_header_id">ID Solicitud <span class="sort-indicator"><i class="fas fa-sort"></i></span></th>
                                 <th data-sort-key="fecha" data-translate="table_header_date">Fecha Solicitud <span class="sort-indicator"><i class="fas fa-sort"></i></span></th>
                                 <th data-sort-key="nombre" data-translate="table_header_name">Nombre Comercio <span class="sort-indicator"><i class="fas fa-sort"></i></span></th>
                                 <th data-sort-key="tipoPersona" data-translate="table_header_type">Tipo Persona <span class="sort-indicator"><i class="fas fa-sort"></i></span></th>
                                 <th data-sort-key="estado" data-translate="table_header_status">Estado <span class="sort-indicator"><i class="fas fa-sort"></i></span></th>
+                                <th data-sort-key="estatusDisplay" data-translate="table_header_etapa">Etapa <span class="sort-indicator"><i class="fas fa-sort"></i></span></th>
                                 <th data-sort-key="diasEnEtapa" data-translate="table_header_dias_etapa">Días en Etapa <span class="sort-indicator"><i class="fas fa-sort"></i></span></th>
-                                <th data-sort-key="diasEnProceso" data-translate="table_header_dias_proceso">Días de Proceso <span class="sort-indicator"><i class="fas fa-sort"></i></span></th>
+                                <th data-sort-key="diasTotales" data-translate="table_header_dias_proceso">Días de Proceso <span class="sort-indicator"><i class="fas fa-sort"></i></span></th>
                             </tr>
                         </thead>
                         <tbody id="solicitudesTableBody">
-                            </tbody>
+                            <!-- Rows will be populated by JavaScript -->
+                        </tbody>
                     </table>
                 </div>
                  <div id="noResultsMessage" class="hidden text-center text-gray-500 py-8">
                     <i class="fas fa-folder-open fa-3x mb-3"></i>
                     <p data-translate="no_solicitudes_message">No hay solicitudes que coincidan con el filtro seleccionado.</p>
                 </div>
-                <div id="paginationControls" class="pagination-controls hidden">
-                    <button id="prevPageButton" disabled>&laquo; Anterior</button>
-                    <span id="pageInfo" class="page-info">Página 1 de 1</span>
-                    <button id="nextPageButton" disabled>Siguiente &raquo;</button>
-                </div>
             </main>
         </div>
     </div>
 
-    <button id="floatingHelpButton" class="floating-help-button" title="¿Necesitas ayuda? (F1)" aria-label="Abrir centro de ayuda">
+    <!-- Floating Help Button (Kept) -->
+    <button id="floatingHelpButton" class="floating-help-button" title="¿Necesitas ayuda?">
         <i class="fas fa-question-circle"></i>
         <span class="ml-2 hidden" data-translate="help_button_text_float">¿Necesitas ayuda?</span>
     </button>
 
+    <!-- Help Modal (Kept) -->
     <div id="helpModal" class="modal-overlay hidden">
         <div class="modal-content">
             <div class="modal-header">
@@ -171,85 +190,78 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div id="helpModalBody" class="modal-body p-6">
-                <div class="contact-area">
-                    <h4 class="contact-area-title">Mesa de Control</h4>
-                    <p class="contact-area-desc">Especialistas por área de solicitud.</p>
-                     <div id="mesaDeControlContacts" class="space-y-1">
+            <div class="modal-tabs">
+                <button class="modal-tab-button active" data-tab="contactTabHelp" data-translate="tab_contact">Contacto</button>
+                <button class="modal-tab-button" data-tab="faqTabHelp" data-translate="tab_faq">Preguntas Frecuentes (Generales)</button>
+            </div>
+            <div class="modal-body">
+                <div id="contactTabHelp" class="tab-content active">
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <p class="font-medium text-gray-700 flex items-center">
+                                <i class="fab fa-whatsapp text-green-500 mr-2 text-lg"></i>
+                                <span data-translate="modal_whatsapp_label">Whatsapp:</span>
+                            </p>
+                            <a href="https://wa.me/5213322119053" target="_blank" class="text-sky-600 hover:underline ml-6 block">+52 33 2211 9053</a>
                         </div>
+                        <div>
+                            <p class="font-medium text-gray-700 flex items-center">
+                                <i class="fas fa-phone-alt text-sky-600 mr-2 text-lg"></i>
+                                <span data-translate="modal_phone_label">Vía Telefónica:</span>
+                            </p>
+                            <a href="tel:+523322119053" class="text-sky-600 hover:underline ml-6 block">+52 33 2211 9053</a>
+                            <a href="tel:+523311733178" class="text-sky-600 hover:underline ml-6 block">+52 33 1173 3178</a>
+                        </div>
+                        <div>
+                            <p class="font-medium text-gray-700 flex items-center">
+                                <i class="fas fa-envelope text-red-500 mr-2 text-lg"></i>
+                                <span data-translate="modal_email_label">Correo Electrónico:</span>
+                            </p>
+                            <a href="mailto:soporteespiralapp@gmail.com" class="text-sky-600 hover:underline ml-6 block">soporteespiralapp@gmail.com</a>
+                        </div>
+                    </div>
                 </div>
-                <hr class="my-6">
-                <div class="contact-area">
-                    <h4 class="contact-area-title">Contacto Directo</h4>
-                    <p class="contact-area-desc">Para dudas generales o fallos en la plataforma.</p>
-                    <div id="directContacts" class="space-y-1">
-                         </div>
-                </div>
-
-                <div class="mt-6 text-center">
-                    <a href="#" id="openFaqModalButton" class="text-sm text-sky-600 hover:underline">Ver preguntas frecuentes</a>
-                    <p class="mt-4 text-xs text-gray-500">¿Eres nuevo? Revisa la <a href="#" id="onboardingLink" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline">guía de onboarding →</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="faqModal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="text-xl font-semibold text-gray-800">Preguntas Frecuentes</h3>
-                <button id="closeFaqModalButton" class="text-gray-500 hover:text-gray-700 text-2xl" title="Cerrar (Esc)">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body p-6">
-                <div class="space-y-4">
-                    <div class="faq-item">
-                        <p class="faq-question"><i class="fas fa-question-circle"></i>¿Qué significa “Incidencias IA”?</p>
-                        <p class="faq-answer">Significa que nuestro sistema automatizado encontró discrepancias o problemas en uno o más documentos, como fechas vencidas, datos que no coinciden o baja calidad de imagen.</p>
-                    </div>
-                    <div class="faq-item">
-                        <p class="faq-question"><i class="fas fa-question-circle"></i>¿Cómo devuelvo una solicitud al cliente?</p>
-                        <p class="faq-answer">Si la solicitud tiene incidencias, presiona el botón "Solicitar Corrección". Esto abrirá un modal para enviar una notificación al cliente con los detalles de los problemas a resolver.</p>
-                    </div>
-                     <div class="faq-item">
-                        <p class="faq-question"><i class="fas fa-question-circle"></i>¿Cuándo usar “Rechazar” vs. “Solicitar corrección”?</p>
-                        <p class="faq-answer">Usa **"Solicitar Corrección"** para problemas que el cliente puede arreglar (ej. un documento expirado). Usa **"Rechazar"** para problemas insalvables (ej. la empresa está fuera de nuestras políticas de riesgo).</p>
-                    </div>
-                    <div class="faq-item">
-                        <p class="faq-question"><i class="fas fa-question-circle"></i>Límites de SLA y colores de chips.</p>
-                        <p class="faq-answer">Los colores indican la urgencia: **Azul (0 días)**: Ingresó hoy. **Verde (1 día)**: En tiempo. **Amarillo (2 días)**: Atención pronto. **Naranja (3 días)**: Prioritario. **Rojo (4+ días)**: Fuera de SLA, requiere acción inmediata.</p>
-                    </div>
-                    <div class="faq-item">
-                        <p class="faq-question"><i class="fas fa-question-circle"></i>Procedimiento para contratos firmados.</p>
-                        <p class="faq-answer">Una vez que la solicitud está en estado "Firmada", el proceso operativo se ha completado. Cualquier ajuste posterior debe manejarse a través de Soporte Técnico.</p>
+                <div id="faqTabHelp" class="tab-content">
+                    <div class="space-y-3">
+                        <div class="faq-item">
+                            <p class="faq-question"><i class="fas fa-question-circle mr-2"></i><span data-translate="faq_general1_q">¿Cómo actualizo mis datos personales?</span></p>
+                            <p class="faq-answer" data-translate="faq_general1_a">Puedes actualizar tus datos personales desde la sección "Perfil" en el menú de usuario.</p>
+                        </div>
+                        <div class="faq-item">
+                            <p class="faq-question"><i class="fas fa-question-circle mr-2"></i><span data-translate="faq_general2_q">¿Qué hago si olvidé mi contraseña?</span></p>
+                            <p class="faq-answer" data-translate="faq_general2_a">En la pantalla de inicio de sesión, haz clic en "¿Olvidaste tu contraseña?" y sigue las instrucciones.</p>
+                        </div>
+                         <div class="faq-item">
+                            <p class="faq-question"><i class="fas fa-question-circle mr-2"></i><span data-translate="faq4_q">¿Es seguro usar Espiralapp?</span></p>
+                            <p class="faq-answer" data-translate="faq4_a">Sí, en Espiralapp utilizamos los más altos estándares de seguridad para proteger tu información y tus transacciones.</p>
+                        </div>
+                        <div class="faq-item">
+                            <p class="faq-question"><i class="fas fa-question-circle mr-2"></i><span data-translate="faq5_q">¿Dónde puedo cambiar mi contraseña?</span></p>
+                            <p class="faq-answer" data-translate="faq5_a">Puedes cambiar tu contraseña desde la sección de 'Configuración' en tu perfil de usuario.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
+    <!-- Solicitud Detail Modal -->
     <div id="solicitudDetailModal" class="modal-overlay hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="flex items-center">
-                    <h3 class="text-xl font-semibold text-gray-800" id="solicitudDetailModalTitle">Detalle de Solicitud</h3>
-                    <i id="copySolicitudIdIcon" class="fas fa-copy copy-id-icon" title="Copiar ID de Solicitud"></i>
-                </div>
+                <h3 class="text-xl font-semibold text-gray-800" id="solicitudDetailModalTitle">Detalle de Solicitud</h3>
                 <button id="closeSolicitudDetailModal" class="text-gray-500 hover:text-gray-700 text-2xl" title="Cerrar (Esc)">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
+                <!-- Tabs for Detail Modal -->
                 <div id="solicitudDetailModalTabs" class="modal-tabs">
-                    <button class="modal-tab-button active" data-tab="detailTabResumen" data-translate="detail_tab_resumen_ux">Resumen </button>
+                    <button class="modal-tab-button active" data-tab="detailTabResumen" data-translate="detail_tab_resumen_ux">Resumen</button>
                     <button class="modal-tab-button" data-tab="detailTabAnalisisIA" data-translate="detail_tab_analisis_ia">Análisis IA</button>
-                    <button class="modal-tab-button" data-status-specific="enNegociacion" data-tab="detailTabTasas" id="tabButtonTasas" data-translate="detail_tab_tasas_comisiones">Comisión</button>
-                    <button class="modal-tab-button" data-status-specific="autorizadas" data-tab="detailTabContratos" id="tabButtonContratos" data-translate="detail_tab_contratos">Contratos</button>
-                    <button class="modal-tab-button" data-tab="detailTabComentarios" data-translate="detail_tab_comentarios_ux">Comentarios <span class="unsaved-indicator" id="comentariosUnsavedIndicator"></span></button>
                 </div>
 
+                <!-- Tab Content: Resumen -->
                 <div id="detailTabResumen" class="detail-tab-content active">
                     <h4 class="detail-section-title" data-translate="detail_section_title_resumen_solicitud">Resumen de la Solicitud</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -267,70 +279,27 @@
                         </div>
                         <div class="detail-field"><label data-translate="detail_label_dias_etapa">Días en Etapa:</label><span class="value" id="modalDetailDiasEnEtapa"></span></div>
                     </div>
-                </div>
 
-                <div id="detailTabAnalisisIA" class="detail-tab-content">
-                    <h4 class="detail-section-title" data-translate="detail_section_title_analisis_ia">Análisis de IA</h4>
-                    <!-- Content for IA Analysis will go here. For now, a placeholder -->
-                    <p>Contenido del Análisis de IA...</p>
-                    <div class="ia-global-result-box hidden">
-                        <div class="flex justify-between items-center mb-2">
-                            <div class="flex items-center">
-                                <span class="status-badge pendiente-ia"><i class="fas fa-hourglass-half"></i> Pendiente</span>
-                                <span class="date-time"></span>
-                            </div>
-                            <button class="text-xs text-sky-600 hover:underline">Ver detalle completo</button>
-                        </div>
-                        <div class="observations-wrapper hidden">
-                            <span class="observations-label">Observaciones IA:</span>
-                            <p class="observations"></p>
-                        </div>
+                    <h4 class="detail-section-title" data-translate="detail_section_title_datos_comp">Datos Complementarios del Comercio</h4>
+                    <div class="detail-grid mb-6">
+                        <div class="detail-field"><label data-translate="detail_label_rfc">RFC del Negocio:</label><span class="value" id="modalDetailRFC"></span></div>
+                        <div class="detail-field"><label data-translate="detail_label_giro">Giro del Negocio / Industria:</label><span class="value" id="modalDetailGiro"></span></div>
+                        <div class="detail-field"><label data-translate="detail_label_ano_fundacion">Año de Fundación:</label><span class="value" id="modalDetailAnoFundacion"></span></div>
+                        <div class="detail-field"><label data-translate="detail_label_num_empleados">Número de Empleados:</label><span class="value" id="modalDetailNumEmpleados"></span></div>
+                        <div class="detail-field"><label data-translate="detail_label_ventas_anuales">Ventas Anuales Estimadas:</label><span class="value" id="modalDetailVentasAnuales"></span></div>
+                        <div class="detail-field"><label data-translate="detail_label_ticket_promedio">Ticket Promedio Estimado:</label><span class="value" id="modalDetailTicketPromedio"></span></div>
+                        <div class="detail-field"><label data-translate="detail_label_ventas_linea">¿Ventas en línea?:</label><span class="value" id="modalDetailVentasLinea"></span></div>
+                        <div class="detail-field hidden" id="modalDetailPlataformasField"><label data-translate="detail_label_plataformas">Plataformas utilizadas:</label><span class="value" id="modalDetailPlataformas"></span></div>
+                        <div class="detail-field"><label data-translate="detail_label_sucursales">¿Sucursales físicas?:</label><span class="value" id="modalDetailSucursales"></span></div>
+                        <div class="detail-field hidden" id="modalDetailCantidadSucursalesField"><label data-translate="detail_label_cant_sucursales">Cantidad de sucursales:</label><span class="value" id="modalDetailCantidadSucursales"></span></div>
+                        <div class="detail-field"><label data-translate="detail_label_pagina_web">Página Web (opcional):</label><a href="#" target="_blank" class="value text-sky-600 hover:underline" id="modalDetailPaginaWeb"></a></div>
+                        <div class="detail-field"><label data-translate="detail_label_red_social">Red Social con mayor impacto (opcional):</label><a href="#" target="_blank" class="value text-sky-600 hover:underline" id="modalDetailRedSocial"></a></div>
                     </div>
-                    <div id="documentosIaList" class="mt-4">
-                        <!-- Document list with IA status will be rendered here by JS -->
-                    </div>
-                </div>
 
-                <div id="detailTabTasas" class="detail-tab-content" data-status-specific="enNegociacion">
-                    <h4 class="detail-section-title" data-translate="detail_section_title_tasas_comisiones">Configuración de Comisión</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <div class="detail-field">
-                            <label for="inputComisionTransaccion" data-translate="label_comision_transaccion" title="Comisión por cada transacción exitosa.">Comisión por Transacción ($):</label>
-                            <div class="input-currency-wrapper">
-                                <span class="currency-symbol">$</span>
-                                <input type="text" id="inputComisionTransaccion" placeholder="Ej: 2.50">
-                            </div>
-                        </div>
-                    </div>
-                    <button id="guardarTasasButton" class="modal-action-button secondary" data-translate="button_guardar_tasas" disabled>Guardar Comisión</button>
-                </div>
-
-                <div id="detailTabContratos" class="detail-tab-content" data-status-specific="autorizadas">
-                    <h4 class="detail-section-title" data-translate="detail_section_title_contratos">Generación de Contratos</h4>
-                    <div id="contratosContainer">
-                        <div class="flex items-center gap-4 mb-4">
-                            <button id="generarContratosButton" class="modal-action-button primary" data-translate="button_generar_contratos">Generar Contratos</button>
-                        </div>
-                        <div id="contratosLoadingMessage" class="hidden text-gray-600 my-4">
-                            <div class="flex items-center">
-                                <i class="fas fa-spinner fa-spin mr-2"></i>
-                                <div>
-                                    <p data-translate="msj_conectando_api_contratos">Generando tus contratos con WeeTrust… Esto tomará unos segundos.</p>
-                                    <span id="contratoProgressCounter" class="font-bold text-sky-600"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="contratosGeneradosList" class="hidden">
-                            <ul class="space-y-2">
-                                </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="detailTabComentarios" class="detail-tab-content">
-                    <h4 class="detail-section-title" data-translate="detail_section_title_conversacion">Conversación</h4>
+                    <h4 class="detail-section-title" data-translate="detail_section_title_comentarios_mc">Comentarios Internos</h4>
                     <div id="commentHistory" class="comment-history-list mb-2">
-                        </div>
+                        <!-- Comment history will be populated here -->
+                    </div>
                     <textarea id="detailComentariosMC" class="w-full p-2 border border-gray-300 rounded-md min-h-[80px]" placeholder="Añadir nuevo comentario..." maxlength="500"></textarea>
                     <div class="flex justify-between items-center mt-2">
                         <button id="detailGuardarComentarioButton" class="modal-action-button secondary text-sm" data-translate="detail_action_guardar_comentario">Guardar Comentario</button>
@@ -338,80 +307,27 @@
                     </div>
                 </div>
 
-
+                <!-- Tab Content: Análisis IA -->
+                <div id="detailTabAnalisisIA" class="detail-tab-content">
+                    <h4 class="detail-section-title" data-translate="detail_section_title_verif_ia_global">Resultado General</h4>
+                     <div class="ia-global-result-box">
+                        <div id="detailGlobalIAStatus" class="mb-2"></div>
+                        <div id="detailGlobalIADate" class="date-time"></div>
+                        <div id="detailGlobalIAObservaciones" class="observations"></div>
+                    </div>
+                    <h4 class="detail-section-title mt-6" data-translate="detail_section_title_documentos">Documentos Adjuntos</h4>
+                    <ul id="detailDocumentList" class="space-y-2">
+                        <!-- Document items will be populated by JavaScript -->
+                    </ul>
+                </div>
             </div>
             <div class="modal-footer-actions">
                 <button id="detailAprobarButton" class="modal-action-button primary" data-translate="detail_action_aprobar_solicitud">Aprobar Solicitud</button>
                 <button id="detailRechazarButton" class="modal-action-button danger" data-translate="detail_action_rechazar_solicitud">Rechazar Solicitud</button>
+                <button id="detailCerrarModalButton" class="modal-action-button tertiary" data-translate="detail_action_cerrar">Cerrar</button>
             </div>
         </div>
     </div>
-
-    <div id="rejectionReasonModal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="text-xl font-semibold text-gray-800" data-translate="modal_title_motivo_rechazo">Motivo del Rechazo</h3>
-                <button id="closeRejectionModalButton" class="text-gray-500 hover:text-gray-700 text-2xl" title="Cerrar (Esc)">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body p-6">
-                <label for="rejectionReasonSelect" class="block text-sm font-medium text-gray-700 mb-2" data-translate="label_motivo_rechazo">Seleccione un motivo principal:</label>
-                <select id="rejectionReasonSelect" class="w-full p-2 border border-gray-300 rounded-md mb-4">
-                  <option value="">-- Seleccionar motivo --</option>
-                  <option value="Información inconsistente">Información inconsistente</option>
-                  <option value="Documentación fraudulenta">Documentación fraudulenta</option>
-                  <option value="Fuera de políticas de riesgo">Fuera de políticas de riesgo</option>
-                  <option value="Otro">Otro (especificar abajo)</option>
-                </select>
-                <label for="rejectionReasonText" class="block text-sm font-medium text-gray-700 mb-2">Detalles adicionales:</label>
-                <textarea id="rejectionReasonText" class="w-full p-2 border border-gray-300 rounded-md min-h-[100px]" maxlength="500" placeholder="Escriba aquí..."></textarea>
-                <div id="rejectionCharCounter" class="char-counter text-xs text-gray-500 text-right mt-1">0/500</div>
-            </div>
-            <div class="modal-footer-actions">
-                <button id="cancelRejectionButton" class="modal-action-button tertiary" data-translate="button_cancelar">Cancelar</button>
-                <button id="confirmRejectionButton" class="modal-action-button danger" data-translate="button_confirmar_rechazo">Confirmar Rechazo</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="requestCorrectionModal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="text-xl font-semibold text-gray-800" data-translate="modal_title_request_correction">Solicitar Corrección al Cliente</h3>
-                <button id="closeCorrectionModalButton" class="text-gray-500 hover:text-gray-700 text-2xl" title="Cerrar (Esc)">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body p-6">
-                <label for="correctionMessageText" class="block text-sm font-medium text-gray-700 mb-2" data-translate="label_correction_message">Mensaje para el cliente (basado en incidencias):</label>
-                <textarea id="correctionMessageText" class="w-full p-2 border border-gray-300 rounded-md min-h-[150px]" maxlength="1000"></textarea>
-            </div>
-            <div class="modal-footer-actions">
-                <button id="cancelCorrectionButton" class="modal-action-button tertiary" data-translate="button_cancelar">Cancelar</button>
-                <button id="confirmCorrectionButton" class="modal-action-button warning" data-translate="button_confirm_correction">Enviar Solicitud de Corrección</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="confirmationModal" class="modal-overlay hidden">
-        <div class="modal-content">
-             <div class="modal-header">
-                <h3 class="text-xl font-semibold text-gray-800" id="confirmationModalTitle">Confirmar Acción</h3>
-                <button id="closeConfirmationModal" class="text-gray-500 hover:text-gray-700 text-2xl" title="Cerrar (Esc)">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body p-6">
-                <p id="confirmationModalText">¿Está seguro de que desea proceder?</p>
-            </div>
-            <div class="modal-footer-actions">
-                <button id="cancelConfirmationButton" class="modal-action-button tertiary">Cancelar</button>
-                <button id="confirmActionButton" class="modal-action-button primary">Confirmar</button>
-            </div>
-        </div>
-    </div>
-
     <script src="script.js" defer></script>
 </body>
 </html>
