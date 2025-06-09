@@ -88,6 +88,11 @@
         const ITEMS_PER_PAGE = 5;
         let currentPage = 1;
 
+        // Evita excepciones si falta un ID en el DOM
+        function safeSetText(id, txt) {
+          const el = document.getElementById(id);
+          if (el) el.textContent = txt;
+        }
 
         // Translations Object
         const translations = {
@@ -654,24 +659,24 @@
 
 
             // Populate "Resumen" Tab
-            document.getElementById('modalDetailId').textContent = solicitud.id;
-            document.getElementById('modalDetailFechaSolicitud').textContent = solicitud.fecha;
-            document.getElementById('modalDetailNombreComercio').textContent = solicitud.nombre;
-            document.getElementById('modalDetailTipoPersona').textContent = solicitud.tipoPersona;
-            document.getElementById('modalDetailDiasEnProceso').textContent = solicitud.diasEnProceso;
+            safeSetText('modalDetailId', solicitud.id);
+            safeSetText('modalDetailFechaSolicitud', solicitud.fecha);
+            safeSetText('modalDetailNombreComercio', solicitud.nombre);
+            safeSetText('modalDetailTipoPersona', solicitud.tipoPersona);
+            safeSetText('modalDetailDiasEnProceso', solicitud.diasEnProceso);
 
-            const estadoGeneralBadgeModal = document.getElementById('modalDetailEstadoGeneral');
-            if (estadoGeneralBadgeModal) { // Check if element exists
-                estadoGeneralBadgeModal.innerHTML = '';
-                const estadoBadgeInner = document.createElement('span');
-                estadoBadgeInner.className = 'status-badge';
-                const estatusTextKeyModal = `status_${solicitud.estatusKey}`;
-                estadoBadgeInner.textContent = translations[currentLangReg][estatusTextKeyModal] || solicitud.estatusDisplay;
-                const statusClassesModal = { nuevas: 'nuevas', enNegociacion: 'en-negociacion', enRevision: 'en-revision', autorizadas: 'autorizada', pendienteFirma: 'pendiente-firma', firmadas: 'firmada', rechazadas: 'incidencias' };
-                estadoBadgeInner.classList.add(statusClassesModal[solicitud.estatusKey] || 'status-badge-gray');
-                estadoGeneralBadgeModal.appendChild(estadoBadgeInner);
+            const estadoBadgeInner = document.createElement('span');
+            estadoBadgeInner.className = 'status-badge';
+            const estatusTextKeyModal = `status_${solicitud.estatusKey}`;
+            estadoBadgeInner.textContent = translations[currentLangReg][estatusTextKeyModal] || solicitud.estatusDisplay;
+            const statusClassesModal = { nuevas: 'nuevas', enNegociacion: 'en-negociacion', enRevision: 'en-revision', autorizadas: 'autorizada', pendienteFirma: 'pendiente-firma', firmadas: 'firmada', rechazadas: 'incidencias' };
+            estadoBadgeInner.classList.add(statusClassesModal[solicitud.estatusKey] || 'status-badge-gray');
+
+            const estadoWrapper = document.getElementById('modalDetailEstadoGeneral');
+            if (estadoWrapper) {
+                estadoWrapper.innerHTML = ''; // Clear previous content
+                estadoWrapper.appendChild(estadoBadgeInner);
             }
-
 
             const diasEtapaChipModal = document.getElementById('modalDetailDiasEnEtapa');
             diasEtapaChipModal.innerHTML = '';
