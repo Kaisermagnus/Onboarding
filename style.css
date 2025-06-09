@@ -385,6 +385,9 @@ body {
         .input-currency-wrapper input::placeholder {
             color: #9ca3af;
         }
+        .input-currency-wrapper input#inputComisionTransaccion::placeholder {
+            text-indent: 0.75rem;
+        }
 
         .document-list-item {
             display: flex;
